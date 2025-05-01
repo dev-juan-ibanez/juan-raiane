@@ -154,7 +154,7 @@ function startFireworks(years) {
       msg.style.animation = 'none';
       msg.offsetHeight; // Força reflow
       msg.style.animation = ''; // Ativa a animação padrão do CSS
-    }, 3000);
+    }, 4000);
   }
 
   const duration = 15 * 1000; // 15 segundos total de fogos
