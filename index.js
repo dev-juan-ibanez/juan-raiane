@@ -16,7 +16,6 @@ if (!anniversaryMsg) {
   document.body.appendChild(anniversaryMsg); // 👉 Coloca no <body> para garantir que fique sobre tudo
 }
 
-
 // Carrossel
 function showNextImage() {
   images[currentIndex].classList.remove('active');
@@ -143,14 +142,22 @@ function animateHeart(ctx, canvas) {
 function startFireworks(years) {
   if (fireworksInterval) return; // Já está rodando
 
-  // Mostra a mensagem de aniversário
   const msg = document.getElementById('anniversaryMessage');
   if (msg) {
     msg.textContent = `🎉 Feliz Aniversário de Relacionamento! +${years} ano${years > 1 ? 's' : ''} 🎉`;
-    msg.style.display = 'block';
+
+    // 👉 Atraso de 3 segundos antes de exibir a mensagem:
+    setTimeout(() => {
+      msg.style.display = 'block';
+
+      // (Opcional) Reinicia a animação para dar o fade-in de novo:
+      msg.style.animation = 'none';
+      msg.offsetHeight; // Força reflow
+      msg.style.animation = ''; // Ativa a animação padrão do CSS
+    }, 3000);
   }
 
-  const duration = 15 * 1000; // 30 segundos
+  const duration = 15 * 1000; // 15 segundos total de fogos
   const endTime = Date.now() + duration;
 
   fireworksInterval = setInterval(() => {
@@ -164,7 +171,7 @@ function startFireworks(years) {
       colors: ['#ff4081', '#f50057', '#c51162'] // tons rosa/romântico ❤️
     });
 
-    // Se já passaram 30 segundos, para automaticamente
+    // Se já passaram 15 segundos, para automaticamente
     if (Date.now() > endTime) {
       stopFireworks();
     }
