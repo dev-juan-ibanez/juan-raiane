@@ -1,4 +1,7 @@
 let currentIndex = 0;
+let currentYears = null; // Para monitorar quando o ano muda
+let fireworksInterval = null; // Para controlar o efeito contínuo
+
 const images = document.querySelectorAll('.carousel-image');
 const counterElement = document.getElementById('counter');
 
@@ -54,6 +57,17 @@ function updateCounter() {
   const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
   counterElement.textContent = `${years} anos, ${months} meses, ${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos`;
+
+  // 🚀 Checar se o ano mudou ou se está no momento "cheio" (X anos, 0 meses, 0 dias)
+  if (years > 0 && months === 0 && days === 0) {
+    if (currentYears !== years) {
+      currentYears = years;
+      startFireworks(); // Novo ano, começa fogos
+    }
+  } else {
+    stopFireworks(); // Não está em "aniversário" de anos, para fogos
+    currentYears = null; // Reseta
+  }
 }
 updateCounter();
 setInterval(updateCounter, 1000);
@@ -113,6 +127,26 @@ function animateHeart(ctx, canvas) {
     x += 0.01; // Incremento pequeno para suavizar o desenho
   }, 10); // Intervalo para fluidez
 }
+
+function startFireworks() {
+  if (fireworksInterval) return; // Já está rodando
+
+  fireworksInterval = setInterval(() => {
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
+  }, 1000); // A cada 1 segundo joga fogos
+}
+
+function stopFireworks() {
+  if (fireworksInterval) {
+    clearInterval(fireworksInterval);
+    fireworksInterval = null;
+  }
+}
+
 
 // Tela de carregamento
 window.addEventListener('load', () => {
