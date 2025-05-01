@@ -5,6 +5,19 @@ let fireworksInterval = null; // Para controlar o efeito contínuo
 const images = document.querySelectorAll('.carousel-image');
 const counterElement = document.getElementById('counter');
 
+// Cria dinamicamente a mensagem de aniversário se não existir ainda
+let anniversaryMsg = document.getElementById('anniversaryMessage');
+if (!anniversaryMsg) {
+  anniversaryMsg = document.createElement('p');
+  anniversaryMsg.id = 'anniversaryMessage';
+  anniversaryMsg.className = 'romantic-text';
+  anniversaryMsg.style.display = 'none';
+  anniversaryMsg.style.color = '#d6336c';
+  anniversaryMsg.style.fontWeight = 'bold';
+  anniversaryMsg.textContent = '🎉 Feliz Aniversário de Relacionamento! +1 ano 🎉';
+  counterElement.insertAdjacentElement('afterend', anniversaryMsg);
+}
+
 // Carrossel
 function showNextImage() {
   images[currentIndex].classList.remove('active');
@@ -62,7 +75,7 @@ function updateCounter() {
   if (years > 0 && months === 0 && days === 0) {
     if (currentYears !== years) {
       currentYears = years;
-      startFireworks(); // Novo ano, começa fogos
+      startFireworks(years); // Passa o ano atual para mostrar na animação
     }
   } else {
     stopFireworks(); // Não está em "aniversário" de anos, para fogos
@@ -128,34 +141,47 @@ function animateHeart(ctx, canvas) {
   }, 10); // Intervalo para fluidez
 }
 
-function startFireworks() {
+function startFireworks(years) {
   if (fireworksInterval) return; // Já está rodando
 
-  const duration = 30 * 1000; // 30 segundos em milissegundos
+  // Mostra a mensagem de aniversário
+  const msg = document.getElementById('anniversaryMessage');
+  if (msg) {
+    msg.textContent = `🎉 Feliz Aniversário de Relacionamento! +${years} ano${years > 1 ? 's' : ''} 🎉`;
+    msg.style.display = 'block';
+  }
+
+  const duration = 30 * 1000; // 30 segundos
   const endTime = Date.now() + duration;
 
   fireworksInterval = setInterval(() => {
     confetti({
-      particleCount: 100,
-      spread: 70,
-      origin: { y: 0.6 }
+      particleCount: 120,
+      spread: 80,
+      origin: { y: 0.6 },
+      ticks: 200,
+      scalar: 1.2,
+      shapes: ['circle'],
+      colors: ['#ff4081', '#f50057', '#c51162'] // tons rosa/romântico ❤️
     });
 
     // Se já passaram 30 segundos, para automaticamente
     if (Date.now() > endTime) {
       stopFireworks();
     }
-  }, 1000); // A cada 1 segundo joga fogos
+  }, 1000);
 }
-
 
 function stopFireworks() {
   if (fireworksInterval) {
     clearInterval(fireworksInterval);
     fireworksInterval = null;
   }
+  const msg = document.getElementById('anniversaryMessage');
+  if (msg) {
+    msg.style.display = 'none';
+  }
 }
-
 
 // Tela de carregamento
 window.addEventListener('load', () => {
