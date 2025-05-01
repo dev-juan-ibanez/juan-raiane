@@ -131,14 +131,23 @@ function animateHeart(ctx, canvas) {
 function startFireworks() {
   if (fireworksInterval) return; // Já está rodando
 
+  const duration = 30 * 1000; // 30 segundos em milissegundos
+  const endTime = Date.now() + duration;
+
   fireworksInterval = setInterval(() => {
     confetti({
       particleCount: 100,
       spread: 70,
       origin: { y: 0.6 }
     });
+
+    // Se já passaram 30 segundos, para automaticamente
+    if (Date.now() > endTime) {
+      stopFireworks();
+    }
   }, 1000); // A cada 1 segundo joga fogos
 }
+
 
 function stopFireworks() {
   if (fireworksInterval) {
