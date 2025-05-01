@@ -10,13 +10,12 @@ let anniversaryMsg = document.getElementById('anniversaryMessage');
 if (!anniversaryMsg) {
   anniversaryMsg = document.createElement('p');
   anniversaryMsg.id = 'anniversaryMessage';
-  anniversaryMsg.className = 'romantic-text';
-  anniversaryMsg.style.display = 'none';
-  anniversaryMsg.style.color = '#d6336c';
-  anniversaryMsg.style.fontWeight = 'bold';
+  anniversaryMsg.className = 'romantic-text'; // Mantém a classe romântica se quiser
+  anniversaryMsg.style.display = 'none'; // Apenas o display para esconder
   anniversaryMsg.textContent = '🎉 Feliz Aniversário de Relacionamento! +1 ano 🎉';
-  counterElement.insertAdjacentElement('afterend', anniversaryMsg);
+  document.body.appendChild(anniversaryMsg); // 👉 Coloca no <body> para garantir que fique sobre tudo
 }
+
 
 // Carrossel
 function showNextImage() {
