@@ -151,7 +151,7 @@ function startFireworks(years) {
     msg.style.display = 'block';
   }
 
-  const duration = 30 * 1000; // 30 segundos
+  const duration = 15 * 1000; // 30 segundos
   const endTime = Date.now() + duration;
 
   fireworksInterval = setInterval(() => {
