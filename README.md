@@ -21,7 +21,7 @@ Este é um projeto romântico e especial criado para celebrar a história de amo
 
 Você pode testar o site clicando no link abaixo:
 
-🔗 [https://juan-ibanezdf.github.io/juanraiane/](https://juan-ibanezdf.github.io/juanraiane/)
+🔗 [https://dev-juan-ibanez.github.io/juan-raiane/](https://dev-juan-ibanez.github.io/juan-raiane/)
 
 ## Como Contribuir
 
