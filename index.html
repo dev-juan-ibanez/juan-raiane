@@ -1,7 +1,6 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-
-<head>
+  <head>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <meta charset="UTF-8" />
@@ -12,124 +11,322 @@
     <meta name="description" content="Site single page of love" />
     <link rel="shortcut icon" href="assets/icon.png" type="image/x-icon" />
     <title>Juan e Raiane</title>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@400;700&display=swap"
-        rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+  </head>
+
+  <body>
     <div id="loading-screen">
-        <div class="loading-message">Aguarde...</div>
+      <div class="loading-heart">
+        <div class="heart-shape"></div>
+      </div>
+      <p class="loading-text">Formando o nosso coração...</p>
     </div>
-    <div id="main-content" style="display: none;">
-        <div class="container">
-
-            <!-- Nomes -->
-            <h2 class="romantic-title">Welcome!</h1>
-
-                <!-- Carousel -->
-                <div class="carousel">
-                    <img src="assets/image1.jpeg" alt="Foto 1" class="carousel-image" />
-                    <img src="assets/image2.jpeg" alt="Foto 2" class="carousel-image" />
-                    <img src="assets/image3.jpeg" alt="Foto 3" class="carousel-image" />
-                    <img src="assets/image4.jpeg" alt="Foto 4" class="carousel-image" />
-                    <img src="assets/image5.jpeg" alt="Foto 5" class="carousel-image" />
-                </div>
-                <!-- Nomes -->
-                <h1 class="romantic-title">Juan ❤️ Raiane</h1>
-
-                <!-- Texto romântico -->
-                <p class="romantic-text">
-                    Desde o momento em que nossos caminhos se cruzaram, minha vida mudou
-                    para melhor. Cada instante ao seu lado é um presente que guardo com
-                    carinho. Obrigado por ser minha inspiração e meu amor.
-                </p>
-
-                <!-- Linha do Tempo -->
-                <section class="timeline">
-                    <h2 class="romantic-title">Nossa História</h2>
-                    <ul class="timeline-list">
-                         <li>
-                            <span class="timeline-date">22/03/2024</span>
-                            <p>O dia do nosso primeiro beijo.</p>
-                        </li>
-                        <li>
-                            <span class="timeline-date">01/05/2024</span>
-                            <p>O dia em que foi oficializado nosso namoro.</p>
-                        </li>
-                         <li>
-                            <span class="timeline-date">17/06/2024</span>
-                            <p>O dia em que você me levou pela primeira vez na academia.</p>
-                        </li>
-                        <li>
-                            <span class="timeline-date">05/07/2024</span>
-                            <p>Nosso primeiro passeio de barco juntos.</p>
-                        </li>
-                        <li>
-                            <span class="timeline-date">03/08/2024</span>
-                            <p>Sua primeira flor.</p>
-                        </li>
-                    </ul>
-                </section>
-
-                <!-- Contador de tempo juntos -->
-                <span class="time-together romantic-title">Juntos há:</span>
-                <p class="counter" id="counter">Carregando...</p>
-
-                <!-- Citações Românticas -->
-                <section class="quotes">
-                    <h2 class="romantic-title">Citações de Amor</h2>
-                    <blockquote class="quote">“Amar não é olhar um para o outro, é olhar juntos na mesma direção.”
-                    </blockquote>
-                    <blockquote class="quote">“O amor é a força mais sutil do mundo.”</blockquote>
-                    <blockquote class="quote">“Você é minha melhor escolha todos os dias.”</blockquote>
-                </section>
-
-                <!-- Playlist -->
-                <div class="playlist">
-                    <h2 class="romantic-title">Nossas músicas:</h2>
-                    <iframe style="border-radius:12px"
-                        src="https://open.spotify.com/embed/playlist/2ab01mAEMVLV671tFebWmY?utm_source=generator"
-                        width="100%" height="352" frameBorder="0" allowfullscreen=""
-                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                        loading="lazy"></iframe>
-                </div>
-
-                <!-- Equação de Coração -->
-                <section class="equation-section">
-                    <h2 class="romantic-title">
-                        Te dedico essa Equação:<br>
-                    </h2>
-                    <span class="equation-inline">
-                      Equação: f(x) = x<sup>2/3</sup> + (e / 3) * (π - x²)<sup>1/2</sup> * sin(a * π * x) <br /><br /> a = 6,5
-                    </span>
-                    <button id="plotButton" class="plot-button">
-                        Clique aqui para ver o resultado!
-                    </button>
-                    <div id="equationDetails" style="display: none; margin-top: 20px; text-align: center;">
-                        <span id="equationInfo"></span>
-                        <div id="canvasContainer" style="margin-top: 20px;">
-                            <canvas id="loveCanvas"></canvas>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Mensagem personalizada -->
-                <section class="personal-message">
-                    <h2 class=" romantic-title">Mensagem para você</h2>
-                    <p>Raiane, cada dia ao seu lado é um presente. Sou grato por você ser quem é e por iluminar a minha
-                        vida
-                        com
-                        seu amor e alegria. Te amo hoje e sempre! ❤️</p>
-                </section>
+    <div class="site-hearts" aria-hidden="true"></div>
+    <div class="floating-hearts" aria-hidden="true"></div>
+    <div id="main-content" style="display: none">
+      <main class="canvas">
+        <div class="hero-banner" role="presentation">
+          <div class="hero-overlay">
+            <h1 class="hero-title">Juan <span>❤️</span> Raiane</h1>
+          </div>
         </div>
-    
+        <div class="hero-copy">
+          <p class="hero-subtitle">
+            Celebrando cada capítulo da nossa história.
+          </p>
+          <p class="hero-description">
+            Um passeio visual pelo amor que construímos desde maio de 2024. Que
+            este banner conte a intensidade dos nossos olhares e sorrisos
+            compartilhados.
+          </p>
+          <div class="hero-timer" aria-live="polite">
+            <p class="hero-timer-label">Cronômetro do nosso amor</p>
+            <strong class="counter hero-timer-counter" id="counter"
+              >Carregando...</strong
+            >
+            <p class="hero-timer-note">marcados desde 1º de maio de 2024.</p>
+          </div>
+        </div>
+
+        <section class="section-strip strip-rose" aria-label="Linha do tempo">
+          <div class="story-river" id="storyRiver">
+            <div class="section-heading-row">
+              <div>
+                <p class="eyebrow">Linha do tempo</p>
+                <h2 class="section-title">Memórias que guiam a gente</h2>
+              </div>
+              <div class="story-controls">
+                <span class="timeline-indicator" id="timelineIndicator"
+                  >1 / 7</span
+                >
+              </div>
+            </div>
+            <div class="timeline-wrapper">
+              <button
+                id="timelinePrev"
+                aria-label="Voltar"
+                class="timeline-nav timeline-nav-left"
+              >
+                ‹
+              </button>
+              <div class="timeline-stream-viewport">
+                <div class="timeline-slide-track" id="timelineStream">
+                  <article class="timeline-node" data-node data-animate>
+                    <span class="timeline-date">22/03/2024</span>
+                    <p>
+                      Primeiro beijo — o mundo diminuiu e sobrou só a gente.
+                    </p>
+                  </article>
+                  <article class="timeline-node" data-node data-animate>
+                    <span class="timeline-date">01/05/2024</span>
+                    <p>O namoro oficial trouxe brilho novo ao cotidiano.</p>
+                  </article>
+                  <article class="timeline-node" data-node data-animate>
+                    <span class="timeline-date">17/06/2024</span>
+                    <p>
+                      Você me levou para treinar e deixou cada passo mais leve.
+                    </p>
+                  </article>
+                  <article class="timeline-node" data-node data-animate>
+                    <span class="timeline-date">05/07/2024</span>
+                    <p>
+                      Passes de barco e o horizonte confirmando que o céu era
+                      nosso.
+                    </p>
+                  </article>
+                  <article class="timeline-node" data-node data-animate>
+                    <span class="timeline-date">03/08/2024</span>
+                    <p>
+                      Flores, bilhetes e um sorriso dizendo "vai ser pra
+                      sempre".
+                    </p>
+                  </article>
+                  <article class="timeline-node" data-node data-animate>
+                    <span class="timeline-date">21/11/2024</span>
+                    <p>
+                      Primeiro natal juntos e mil risadas embalando o jantar.
+                    </p>
+                  </article>
+                  <article class="timeline-node" data-node data-animate>
+                    <span class="timeline-date">10/02/2025</span>
+                    <p>
+                      Planejamos viagens e desenhamos nossos planos no quadro da
+                      sala.
+                    </p>
+                  </article>
+                </div>
+              </div>
+              <button
+                id="timelineNext"
+                aria-label="Avançar"
+                class="timeline-nav timeline-nav-right"
+              >
+                ›
+              </button>
+            </div>
+            <div class="quote-stream">
+              <p class="eyebrow">Palavras que ecoam</p>
+              <blockquote class="quote">
+                “Amar não é olhar um para o outro, é olhar juntos na mesma
+                direção.”
+              </blockquote>
+              <blockquote class="quote">
+                “O amor é a força mais sutil do mundo.”
+              </blockquote>
+              <blockquote class="quote">
+                “Você é minha melhor escolha todos os dias.”
+              </blockquote>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="section-strip strip-white"
+          aria-label="Galeria vertical"
+        >
+          <div class="gallery-flow">
+            <div class="section-heading-row">
+              <div>
+                <p class="eyebrow">Galeria vertical</p>
+                <h2 class="section-title">Memórias em colagem</h2>
+              </div>
+              <span class="gallery-indicator" id="galleryIndicator"
+                >1 / 10</span
+              >
+            </div>
+            <div class="gallery-wrapper">
+              <button
+                class="gallery-nav"
+                id="galleryPrev"
+                aria-label="Foto anterior"
+              >
+                ‹
+              </button>
+              <div class="gallery-slide-track">
+                <img
+                  src="assets/img1.jpg"
+                  alt="Encontro 1"
+                  class="gallery-slide"
+                  data-caption="Encontro 1"
+                />
+                <img
+                  src="assets/img2.webp"
+                  alt="Encontro 2"
+                  class="gallery-slide"
+                  data-caption="Encontro 2"
+                />
+                <img
+                  src="assets/img3.webp"
+                  alt="Encontro 3"
+                  class="gallery-slide"
+                  data-caption="Encontro 3"
+                />
+                <img
+                  src="assets/img4.webp"
+                  alt="Encontro 4"
+                  class="gallery-slide"
+                  data-caption="Encontro 4"
+                />
+                <img
+                  src="assets/img5.webp"
+                  alt="Encontro 5"
+                  class="gallery-slide"
+                  data-caption="Encontro 5"
+                />
+                <img
+                  src="assets/img6.webp"
+                  alt="Encontro 6"
+                  class="gallery-slide"
+                  data-caption="Encontro 6"
+                />
+                <img
+                  src="assets/img7.webp"
+                  alt="Encontro 7"
+                  class="gallery-slide"
+                  data-caption="Encontro 7"
+                />
+                <img
+                  src="assets/img8.jpg"
+                  alt="Encontro 8"
+                  class="gallery-slide"
+                  data-caption="Encontro 8"
+                />
+                <img
+                  src="assets/img9.jpg"
+                  alt="Encontro 9"
+                  class="gallery-slide"
+                  data-caption="Encontro 9"
+                />
+                <img
+                  src="assets/img10.jpg"
+                  alt="Encontro 10"
+                  class="gallery-slide"
+                  data-caption="Encontro 10"
+                />
+              </div>
+              <button
+                class="gallery-nav"
+                id="galleryNext"
+                aria-label="Próxima foto"
+              >
+                ›
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-strip strip-rose" aria-label="Trilha sonora">
+          <div class="playlist-stage">
+            <div class="playlist-hearts" aria-hidden="true"></div>
+            <div class="mix-grid playlist-grid">
+              <article class="playlist-card">
+                <p class="eyebrow">Trilha sonora</p>
+                <h2 class="section-title">
+                  As músicas que embalam nosso tempo
+                </h2>
+                <iframe
+                  src="https://open.spotify.com/embed/playlist/2ab01mAEMVLV671tFebWmY?utm_source=generator"
+                  width="100%"
+                  height="303"
+                  frameborder="0"
+                  scrolling="no"
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"
+                ></iframe>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-strip strip-white" aria-label="Equação">
+          <div class="equation-stage">
+            <article class="equation-card">
+              <p class="eyebrow">Para você</p>
+              <h2 class="section-title">Te dedico essa equação</h2>
+              <span class="equation-inline">
+                f(x) = x<sup>2/3</sup> + (e / 3) * (π - x²)<sup>1/2</sup> *
+                sin(a * π * x)<br />
+                a = 6,5
+              </span>
+              <button id="plotButton" class="plot-button">
+                Mostrar o resultado da equação!
+              </button>
+              <div class="equation-reveal" id="equationReveal">
+                <div
+                  class="equation-hearts"
+                  id="equationHearts"
+                  aria-hidden="true"
+                ></div>
+                <div id="equationDetails" class="equation-details">
+                  <canvas id="loveCanvas"></canvas>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-strip strip-white" aria-label="Mensagem">
+          <div class="personal-note">
+            <p class="eyebrow">Mensagem</p>
+            <h2 class="section-title">Raiane, meu amor</h2>
+            <p>
+              Cada dia ao seu lado refina o que sinto de melhor no mundo.
+              Obrigado por transformar momentos pequenos em histórias eternas.
+              Te amo sempre.
+            </p>
+          </div>
+        </section>
+      </main>
+    </div>
+    <div
+      class="gallery-lightbox"
+      id="galleryLightbox"
+      aria-modal="true"
+      role="dialog"
+      aria-label="Foto ampliada"
+    >
+      <div class="gallery-lightbox-content">
+        <button
+          class="gallery-lightbox-close"
+          id="galleryLightboxClose"
+          aria-label="Fechar pré-visualização"
+        >
+          ×
+        </button>
+        <div class="gallery-lightbox-frame">
+          <img id="lightboxImage" alt="" />
+        </div>
+        <p class="gallery-lightbox-caption" id="lightboxCaption"></p>
+      </div>
     </div>
     <footer>
-        Feito com ❤️ por <span>Juan Ibañez</span><br>
-        © Todos os direitos reservados <span id="year"></span>.
+      Feito com <span>❤️</span> por Juan Ibañez · <span id="year"></span>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="index.js"></script>
-</body>
-
+  </body>
 </html>
